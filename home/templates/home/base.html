@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <style media="screen">
+      .navbar_bgcolor{
+        background-color:#001a33;
+      }
+      .jumbotron_box{
+        margin-bottom: 0;
+        padding-top: 0.005px;
+        padding-bottom: 0.005px;
+        border-top-left-radius:50%;
+        border-top-right-radius:50%;
+      }
+      .jumbotron_box1{
+        border-bottom-left-radius:50%;
+        border-bottom-right-radius:50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse navbar_bgcolor">
+
+      <div class="container">
+        <a class="navbar-brand mr-4" href="#">CLUBSportal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="#dev">Contact</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+          </div>
+        </div>
+      </div>
+
+
+    </nav>
+    <!--<header>
+      <div id="brand" >
+        <h1>CLUBSportal</h1>
+      </div>
+    </header>
+      <nav>
+        <ul>
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="#">Login/Registration</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    -->
+      <div class="jumbotron jumbotron-fluid text-white text-center navbar_bgcolor jumbotron_box1">
+        <div class="container">
+            <h1 class="display-1">CLUBSportal</h1>
+            <p class="lead">Discover passions and strengths...</p>
+        </div>
+      </div>
+      {% block body %}
+      {% endblock %}
+
+      <!-- navs -->
+<footer class="jumbotron jumbotron_box footer">
+      <h4 class="display-4 py-5 mt-5 text-center" id="dev">The developers</h2>
+
+      <nav class="nav justify-content-center nav-pills flex-column flex-md-row ">
+          <a class="nav-link active" href="#ninja" data-toggle="tab">1rahul1</a>
+          <a class="nav-link" href="#wizard" data-toggle="tab">_d4nk_</a>
+          <a class="nav-link" href="#captain" data-toggle="tab">Captain Code</a>
+          <a class="nav-link" href="#avenger" data-toggle="tab">Angular Avenger</a>
+      </nav>
+
+      <div class="container tab-content py-5">
+          <div class="tab-pane active" id="ninja">
+              <h3>Rahul Prasad</h3>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="tab-pane fade" id="wizard">
+              <h3>The Web Wizard</h3>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="tab-pane fade" id="captain">
+              <h3>Captain Code</h3>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="tab-pane fade" id="avenger">
+              <h3>Angular Avenger</h3>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+              <p>Lorem ninja ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+      </div>
+</footer>
+      <!-- jQuery first, then Tether, then Bootstrap JS. -->
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </body>
+</html>
