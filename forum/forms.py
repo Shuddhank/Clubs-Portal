@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 class Add_Post(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={'rows':'3'}))
     class Meta:
-        model = Post 
+        model = Post
         fields=['title','content']
 
 class Add_Comment(forms.ModelForm):
@@ -15,3 +15,6 @@ class Add_Comment(forms.ModelForm):
     class Meta:
         model = Comments
         fields=['content']
+
+class Search_Post(forms.Form):
+    search_post = forms.CharField(max_length=100)

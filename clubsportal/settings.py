@@ -48,6 +48,12 @@ INSTALLED_APPS = [
     'administration.apps.AdministrationConfig',
     'forum.apps.ForumConfig',
     'crispy_forms',
+    'events.apps.EventsConfig',
+    'rest_framework',
+    'vote',
+    'jquery',
+    'social_django',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'clubsportal.urls'
@@ -73,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -90,6 +99,19 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_GITHUB_KEY = 'ed7c5e3d6a9bd674f496'
+SOCIAL_AUTH_GITHUB_SECRET = '82737827707a84a20cbd51702443dbef52784f45'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '802277340786-tmrt1ord61ut9qk93av12ccjfjsco88t.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'GWmEx4ToTSRiLNNZ8dJcWjDO'
 
 
 # Password validation
@@ -116,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -144,7 +166,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ############SSR
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER='iiits2021'
+EMAIL_HOST_USER='iiits2021@gmail.com'
 EMAIL_HOST_PASSWORD='qwerty@123'
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
+
+
+#-----------------------------------------------
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
+}

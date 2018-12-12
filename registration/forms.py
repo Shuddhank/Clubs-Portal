@@ -10,7 +10,23 @@ class Signup_form(UserCreationForm):
         model = User
         fields=['email','username','password1','password2']
 
-class Add_profile(forms.ModelForm):
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if "@gmail.com" not in email:   # any check you need
+            raise forms.ValidationError("Must be a gmail address")
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError(u'Email addresses must be unique.')
+        return email
+
+
+class AddProfile(forms.ModelForm):
     class Meta:
         model = Profile
-        fields=['gender','ug']
+        fields = ['gender','ug']
+
+class EditPasswordFrom(forms.Form):
+    password=forms.CharField(label='Enter new password',widget=forms.PasswordInput(attrs={'placeholder':'Password*'}))
+    confirm_password=forms.CharField(label='Re-enter the password',widget=forms.PasswordInput(attrs={'placeholder':'Retype Password*'}))
+    class Meta:
+        fields=('password','confirm_password')

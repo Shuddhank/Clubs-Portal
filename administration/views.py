@@ -13,8 +13,8 @@ from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 
 def index(request):
-    qs = ProposedClub.objects.all()
-    return render(request,'administration/ew.html',{"qs":qs})
+    clubs = ProposedClub.objects.all()
+    return render(request,'administration/admin.html',{"clubs":clubs})
 
 def result(request):
     ab = ProposedClub.objects.all()
@@ -34,8 +34,8 @@ def result(request):
         [mail],
         fail_silently=False,
     )
-    qs = ProposedClub.objects.all()
-    return render(request, 'administration/ew.html', {"qs":qs})
+    clubs = ProposedClub.objects.all()
+    return render(request, 'administration/admin.html', {"clubs":clubs})
 
 # Create your views here.
 def result1(request):
@@ -44,7 +44,7 @@ def result1(request):
     for a in ab:
         if a.club_name == request.POST['name']:
             print(a)
-            Onpollclub.objects.create(club_name=a.club_name,admin=a.name,club_info=a.club_info,club_logo=a.club_logo)
+            Onpollclub.objects.create(club_name=a.club_name,name=a.name,club_info=a.club_info,club_logo=a.club_logo)
             cs = a.name
             a.delete()
             break;
@@ -56,5 +56,5 @@ def result1(request):
         [mail],
         fail_silently=False,
     )
-    qs = ProposedClub.objects.all()
-    return render(request, 'administration/ew.html', {"qs":qs})
+    clubs = ProposedClub.objects.all()
+    return render(request, 'administration/admin.html', {"clubs":clubs})

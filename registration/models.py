@@ -12,13 +12,15 @@ class Profile(models.Model):
         ('Neutral','Neutral'),
     )
     gender = models.CharField(max_length=10,choices=gender_choices,default='Neutral')
-    ug_choices = (
+    Category_choices = (
         ('UG1','UG1'),
         ('UG2','UG2'),
         ('UG3','UG3'),
         ('UG4','UG4'),
+        ('Phd','Phd'),
+        ('PG','PG'),
     )
-    ug = models.CharField(max_length=10,choices=ug_choices,default='UG1')
+    ug = models.CharField(max_length=10,choices=Category_choices,default='UG1')
     image = models.ImageField(default="default.jpg", upload_to = 'profile_pics' )
 
 

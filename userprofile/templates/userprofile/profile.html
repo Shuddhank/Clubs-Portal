@@ -9,6 +9,7 @@
           <p class="text-secondary">email : {{ user.email }}</p>
           <p class="text-secondary">gender : {{ user.profile.gender }}</p>
           <p class="text-secondary">year: {{ user.profile.ug }}</p>
+          <p class="text-secondary"> <a href="{% url 'change_password' %}"> Change Password </a> </p>
         </div>
       </div>
         <form method="POST" enctype="multipart/form-data">
